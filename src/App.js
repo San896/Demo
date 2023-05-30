@@ -1,10 +1,16 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { BrowserRouter } from "react-router-dom";
+import { AuthComp } from './auth/AuthComp';
 import LogIn from './components/LogIn';
 
 function App() {
   return (
+    <BrowserRouter>
+      <AuthComp/>
       <LogIn/>
+    </BrowserRouter>
+      
     // <div className="App">
     //   <header className="App-header">
     //     <img src={logo} className="App-logo" alt="logo" />

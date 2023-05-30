@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 
 import validator  from 'validator'
@@ -12,6 +13,7 @@ function LogIn() {
     password: "",
   });
 
+  const [user, setUser] = useState({})
 
 
 
@@ -20,10 +22,10 @@ function LogIn() {
       let error = {};
       if(input.password) {
           if(!validator.isAlphanumeric(input.password)){
-              error.password = "Password inválida, solo puede contener letras y numeros"
+              error.password = "Password inválida, solo puede contener letras y/o numeros"
             }
             else if (input.password.length > 8) {
-                error.password = "Password demasiado larga";
+                error.password = "Password demasiado larga, max 8 caracteres";
             } 
         }                                  
         if(input.email) {
@@ -47,20 +49,28 @@ function LogIn() {
     setError(validate(newData));
   }
 
-  function handleSubmit(e) {
+   function handleSubmit(e) {
     e.preventDefault();
     if ( !input.email || !input.password ) {
       alert("Por favor completa todos los campos");
     } 
-    if(error){
-        
-        alert({error})
+    if(error.email || error.password){
+        console.log('error error', error.message)
+        alert("Error, revisar datos")
     }
-    else {
-
-      alert('okok')
+    else  return async function(dispatch) {
+        await axios.post(
+         'http://demotest.silicon-access.com/fapi/auth/login/',
+        {
+          username:"noreply+challenge@silicon-access.com",
+          password:"bienvenido123"
+        })
+        .then((res) => setUser(res)).catch((error) => console.log('err:', error));
+        console.log('estadooo' , user)
     }
   }
+
+
 
 
   return (
@@ -70,7 +80,7 @@ function LogIn() {
           onSubmit={handleSubmit}
 
         >
-          <h1 > Log In Demo</h1>
+          <h1 > Log In Demoo </h1>
 
         
           <div >
