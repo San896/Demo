@@ -1,20 +1,24 @@
-import axios from "axios";
-import React, { useState, useEffect } from "react";
+import { useReducer, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import validator  from 'validator'
+import { AuthData } from "../auth/AuthComp";
 
 
 function LogIn() {
 
   const [error, setError] = useState({});
 
-  const [input, setInput] = useState({
-    email: "",
-    password: "",
-  });
+//   const [input, setInput] = useState({
+//     email: "",
+//     password: "",
+//   });
 
-  const [user, setUser] = useState({})
+//   const [user, setUser] = useState({})
 
+  const navigate = useNavigate();
+  const  {login}  = AuthData();
+  const [input, setInput] = useReducer((input, newInput) => { return ( {...input, ...newInput} )}, {email: "", password: ""})
 
 
   function validate(input) {
@@ -49,7 +53,7 @@ function LogIn() {
     setError(validate(newData));
   }
 
-   function handleSubmit(e) {
+   async function handleSubmit(e) {
     e.preventDefault();
     if ( !input.email || !input.password ) {
       alert("Por favor completa todos los campos");
@@ -58,15 +62,15 @@ function LogIn() {
         console.log('error error', error.message)
         alert("Error, revisar datos")
     }
-    else  return async function(dispatch) {
-        await axios.post(
-         'http://demotest.silicon-access.com/fapi/auth/login/',
-        {
-          username:"noreply+challenge@silicon-access.com",
-          password:"bienvenido123"
-        })
-        .then((res) => setUser(res)).catch((error) => console.log('err:', error));
-        console.log('estadooo' , user)
+    else  {
+        try {
+            await login(input.email, input.password)
+            alert('profile')
+            // navigate("/profile")          
+        } catch (e) {
+            alert(e.message)
+        }
+
     }
   }
 
