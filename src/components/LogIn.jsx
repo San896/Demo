@@ -70,7 +70,7 @@ function LogIn() {
               navigate("/profile")          
             }
         } catch (e) {
-            alert(e.message)
+            alert('error al iniciar sesion')
         }
 
     }
