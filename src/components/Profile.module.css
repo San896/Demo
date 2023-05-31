@@ -1,0 +1,27 @@
+.gral{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.gral h1{
+    display: flex;
+    position: relative;
+    align-self: start;
+    right: 25vw;
+}
+.gral img{
+    display: flex;
+    position: relative;
+    top: 10vh;
+    right: 7vw;
+}
+
+.info{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    top: 12vh;
+    left: 7vw;
+}
