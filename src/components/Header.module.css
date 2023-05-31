@@ -1,0 +1,27 @@
+.divhead {
+    display: flex;
+    background-color: black;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.divhead h1{
+    display: flex;
+    color: white;
+    font-weight: 500;
+    font-size: 7vh;    
+}
+
+
+.divhead header {
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 7px;
+    gap: 5vw;
+}
+
+ /* .btn{
+
+} */

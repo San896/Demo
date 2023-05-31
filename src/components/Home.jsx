@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function Home(props) {
     return (
         <div>
-
+            <p>bienvenido a la home </p>
         </div> 
     );
 }

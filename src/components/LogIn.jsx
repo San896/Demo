@@ -1,24 +1,25 @@
-import { useReducer, useState } from "react";
+import { useContext, useReducer, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import validator  from 'validator'
-import { AuthData } from "../auth/AuthComp";
+import { AuthContext } from "../auth/AuthComp";
 
 
 function LogIn() {
-
+  
   const [error, setError] = useState({});
 
-//   const [input, setInput] = useState({
-//     email: "",
-//     password: "",
-//   });
+  const [input, setInput] = useState({
+    email: "",
+    password: "",
+  });
 
 //   const [user, setUser] = useState({})
 
   const navigate = useNavigate();
-  const  {login}  = AuthData();
-  const [input, setInput] = useReducer((input, newInput) => { return ( {...input, ...newInput} )}, {email: "", password: ""})
+
+  const  { login } =useContext(AuthContext)
+  // const [input, setInput] = useReducer((input, newInput) => { return ( {...input, ...newInput} )}, {email: "", password: ""})
 
 
   function validate(input) {
