@@ -1,0 +1,31 @@
+.home{
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    background-color: rgba(145, 143, 143, 0.432);
+    height: 76vh;
+}
+
+.home section {
+    display: flex;
+
+}
+
+.home img {
+    display: flex;
+    position: relative;
+    top: 15vh;
+    left: 5vw;
+    height: 45vh;
+    width: 30vw;
+    border-radius: 25px;
+}
+
+.home p{
+    display: flex;
+    position: relative;
+    font-size: larger;
+    font-weight: 600;
+    width: 50vw;
+    align-self: center;
+
+}

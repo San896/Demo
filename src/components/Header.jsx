@@ -2,12 +2,16 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../auth/AuthComp';
 import style from "./Header.module.css";
+import logosolo  from '../imagenes/logosolo.png'
+
 
 function Header(props) {
+    
     const  { user, logout } =useContext(AuthContext)
+    
     return (
         <div className = {style.divhead}>
-           <h1> Silicon - Commerce</h1>
+           <h1>  Silicon - Commerce <img src={logosolo}alt="" /></h1>
             <header> 
                   <Link to='/'> <button className = {style.btn}> home </button></Link> 
 
@@ -17,7 +21,7 @@ function Header(props) {
 
                  {!user.isAuthenticated ?
                   <Link to='/login'> <button className = {style.btn}> LogIn </button></Link> : 
-                  <button onClick= {()=> logout()} className = {style.btn}> LogOut </button> }
+                  <button onClick= {()=> logout() } className = {style.btn}> LogOut </button> }
                   
             </header> 
         </div>

@@ -30,8 +30,8 @@ function LogIn() {
           if(!validator.isAlphanumeric(input.password)){
               error.password = "Password inválida, solo puede contener letras y/o numeros"
             }
-            else if (input.password.length > 8) {
-                error.password = "Password demasiado larga, max 8 caracteres";
+            else if (input.password.length < 8) {
+                error.password = "Password demasiado cort, min 8 caracteres";
             } 
         }                                  
         if(input.email) {
@@ -61,14 +61,14 @@ function LogIn() {
       alert("Por favor completa todos los campos");
     } 
     if(error.email || error.password){
-        console.log('error error', error.message)
         alert("Error, revisar datos")
     }
     else  {
         try {
-            await login(input.email, input.password)
-            alert('profile')
-             navigate("/profile")          
+            const inicio = await login(input.email, input.password)
+            if(inicio){
+              navigate("/profile")          
+            }
         } catch (e) {
             alert(e.message)
         }
@@ -80,7 +80,7 @@ function LogIn() {
 
 
   return (
-    <>
+    <div className={style.gral}>
       <div className={style.login}>
         <h1 > Log In Demoo </h1>
 
@@ -135,7 +135,7 @@ function LogIn() {
         </form>
 
       </div>
-    </>
+      </div>
   );
 }
 

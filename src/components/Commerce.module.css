@@ -1,0 +1,10 @@
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    /* text-align: center; */
+    
+    background-color: rgba(145, 143, 143, 0.432);
+}
