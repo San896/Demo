@@ -5,6 +5,7 @@ import { Profile } from '../components/Profile'
 import Rutas from "../rutas/Rutas";
 
 
+
 export const AuthContext = createContext();
 
 // export const AuthData = () => useContext(AuthContext);
@@ -21,7 +22,7 @@ export const AuthComp = () => {
           return new Promise((resolve, reject) => {
 
                if (password) {
-                    // setUser({email: email, isAuthenticated: true})
+                    setUser({email: email, isAuthenticated: true})
                     resolve("success")
                } else {
                     reject("Incorrect password")
@@ -38,7 +39,7 @@ export const AuthComp = () => {
 
      return (
           
-               <AuthContext.Provider value={{user, login, logout}}>
+               <AuthContext.Provider value={{user, login, logout}} >
                     <>
                         <Header/>
                         <Rutas/>

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import validator  from 'validator'
 import { AuthContext } from "../auth/AuthComp";
+import style from './LogIn.module.css'
 
 
 function LogIn() {
@@ -67,7 +68,7 @@ function LogIn() {
         try {
             await login(input.email, input.password)
             alert('profile')
-            // navigate("/profile")          
+             navigate("/profile")          
         } catch (e) {
             alert(e.message)
         }
@@ -80,21 +81,20 @@ function LogIn() {
 
   return (
     <>
-      <div >
+      <div className={style.login}>
+        <h1 > Log In Demoo </h1>
+
         <form     
           onSubmit={handleSubmit}
-
         >
-          <h1 > Log In Demoo </h1>
 
-        
           <div >
             <label>
               Email
             </label>
-            <div>
+            <div></div>
         
-            </div>
+            
             <input
               type="email"
               placeholder="Email..."
@@ -106,13 +106,13 @@ function LogIn() {
 
             {error.email && <p className="danger">{error.email}</p>}
             
-
           </div>
         
           <div >
-            <label  >
+            <label >
               Contraseña
             </label>
+            <div></div>
             <input
               type="password"
               placeholder="Contraseña..."
@@ -128,7 +128,7 @@ function LogIn() {
           
           <div >
             <button type="submit">
-              Registrarse
+              Iniciar Sesion
             </button>
           </div>
 
