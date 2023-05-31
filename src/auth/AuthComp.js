@@ -32,7 +32,7 @@ export const AuthComp = () => {
                     }
                     const user1 = axiosPost.data.user
                      setUser({user1, isAuthenticated: true})
-                     console.log('user')
+                     
                     navigate('/profile') 
                
                }

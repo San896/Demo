@@ -10,7 +10,7 @@ export  function Profile(props) {
   const navigate = useNavigate()
 
       useEffect (() => {
-        console.log(user)
+        
         if(!user.isAuthenticated){
           alert('error al iniciar sesion')
           navigate('/login')

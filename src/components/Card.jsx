@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './Card.module.css'
+import { Link } from 'react-router-dom';
 
 function Card({ name, price, detail, image, stock }) {
     return (
@@ -13,8 +14,8 @@ function Card({ name, price, detail, image, stock }) {
             <h5>stock: {stock}</h5>
 
             <section>
-                <button className={style.btn}> Comprar </button>
-                <button className={style.btn}> +Info <h5>{detail}</h5> </button>
+                 <Link to='/carrito'><button className={style.btn}> Comprar </button> </Link>
+                <button className={style.btn}> +Info <h5>{detail}</h5> </button> 
                 
             </section>
          </div> 
