@@ -30,7 +30,9 @@ export const AuthComp = () => {
                     if(!axiosPost){
                          throw new Error('failed login')
                     }
-                     setUser({email, password, isAuthenticated: true})
+                    const user1 = axiosPost.data.user
+                     setUser({user1, isAuthenticated: true})
+                     console.log('user')
                     navigate('/profile') 
                
                }

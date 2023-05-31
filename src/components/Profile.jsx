@@ -10,11 +10,12 @@ export  function Profile(props) {
   const navigate = useNavigate()
 
       useEffect (() => {
+        console.log(user)
         if(!user.isAuthenticated){
           alert('error al iniciar sesion')
           navigate('/login')
       }
-      },{})
+      },[])
 
     return (
         <div className={style.gral}>
@@ -26,13 +27,13 @@ export  function Profile(props) {
          
           <div className={style.info}>
             <label> Nombre </label>
-             <h3> first_name juancho </h3>
+             <h3> {user.user1.first_name} </h3>
             <label> Apellido </label>
-             <h3> last_name juanchooo </h3>
+             <h3> {user.user1.last_name} </h3>
             <label> Email </label>
-             <h3> username o email sadasd@silicon.com </h3>
+             <h3>  {user.user1.email} </h3>
             <label> Tipo </label>
-             <h3> groups.name resident </h3>
+             <h3> {user.user1.groups[0].name} </h3>
           </div>
              
           

@@ -12,12 +12,12 @@ function Commerce(props) {
     const  { user } =useContext(AuthContext)
     const navigate = useNavigate()
 
-    // useEffect(() => {
-    //     if(!user.isAuthenticated){
-    //         alert('Tenes que iniciar sesion para entrar')
-    //         navigate('/login')
-    //     }
-    // },[])
+    useEffect(() => {
+        if(!user.isAuthenticated){
+            alert('Tenes que iniciar sesion para entrar')
+            navigate('/login')
+        }
+    },[])
 
     return (
         <div className={style.cards}>
