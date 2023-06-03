@@ -18,6 +18,22 @@ export const AuthComp = () => {
      const [ user, setUser ] = useState({email: "", password:"", isAuthenticated: false})
      const navigate = useNavigate()
 
+     const checkUser = (user1) => {
+          const storage = sessionStorage.getItem('user')
+          if(!user.isAuthenticated && !storage){
+               setUser({user1, isAuthenticated: true})
+               sessionStorage.setItem('user', user)
+               navigate('/profile') 
+          }
+          if(!user.isAuthenticated && storage){
+               setUser(storage)
+               navigate('/profile') 
+          }
+          if(user.isAuthenticated || storage){
+               navigate('/profile') 
+          }
+     }
+
      const  login = async (email, password) => {
           
                 const axiosPost = await axios.post(
@@ -31,10 +47,24 @@ export const AuthComp = () => {
                          throw new Error('failed login')
                     }
                     const user1 = axiosPost.data.user
-                     setUser({user1, isAuthenticated: true})
-                     
+
+                    // const user1 = user: {
+                    //      username: noreply+challenge@silicon-access.com,
+                    //      first_name: USER,
+                    //      last_name: CHALLENGE,
+                    //      email: "noreply+challenge@silicon-access.com",
+                    //      groups: [
+                    //      {
+                    //      name: "RESIDENT",
+                    //      }
+                    //      ],
+                    //      userprofile: null,
+                    //      }
+
+                    setUser({user1, isAuthenticated: true})
+                    window.sessionStorage.setItem('user', JSON.stringify(user1))
+                    // sessionStorage.setItem('user', JSON.stringify(user))
                     navigate('/profile') 
-               
                }
 
 
@@ -53,13 +83,18 @@ export const AuthComp = () => {
      const logout = () => {
 
           setUser({...user, isAuthenticated: false})
+          window.sessionStorage.removeItem('user')
           navigate('/login')
      }
 
+     const getLs = () => {
+          const userLs = JSON.parse(window.sessionStorage.getItem('user'))
+          if(userLs) return userLs
+     }
 
      return (
           
-               <AuthContext.Provider value={{user, login, logout}} >
+               <AuthContext.Provider value={{user, setUser, login, logout, getLs}} >
                     <>
                         <Header/>
                         <Rutas/>

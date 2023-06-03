@@ -9,15 +9,19 @@ import style from './Commerce.module.css'
 
 function Commerce(props) {
 
-    const  { user } =useContext(AuthContext)
+    const  { user,getLs, setUser } =useContext(AuthContext)
     const navigate = useNavigate()
 
     useEffect(() => {
-        if(!user.isAuthenticated){
+        const user1 = getLs()
+        if(user1 && !user.isAuthenticated){
+          setUser({user1, isAuthenticated:  true})
+          
+        }else if(!user.isAuthenticated && !user1){
             alert('Tenes que iniciar sesion para entrar')
-            navigate('/login')
-        }
-    },[])
+          navigate('/login')
+      }
+    },[user])
 
     return (
         <div className={style.cards}>

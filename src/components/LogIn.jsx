@@ -1,4 +1,4 @@
-import { useContext, useReducer, useState } from "react";
+import { useContext, useEffect, useReducer, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import validator  from 'validator'
@@ -7,7 +7,19 @@ import style from './LogIn.module.css'
 
 
 function LogIn() {
-  
+//user1 traido de sessionstorage - llamo asi x tener misma varialble
+  const  { login, user, setUser, getLs } =useContext(AuthContext)
+  useEffect (() => {
+      const user1 = getLs()
+      if(user1 && !user.isAuthenticated){
+        setUser({user1, isAuthenticated:  true})
+        navigate('/profile')
+      }
+    if(user.isAuthenticated){
+      navigate('/profile')
+  }
+  },[])
+
   const [error, setError] = useState({});
 
   const [input, setInput] = useState({
@@ -19,7 +31,6 @@ function LogIn() {
 
   const navigate = useNavigate();
 
-  const  { login } =useContext(AuthContext)
   // const [input, setInput] = useReducer((input, newInput) => { return ( {...input, ...newInput} )}, {email: "", password: ""})
 
 
