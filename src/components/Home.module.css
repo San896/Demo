@@ -7,10 +7,10 @@
 
 .home section {
     display: flex;
-
+    
 }
 
-.home img {
+.home  img {
     display: flex;
     position: relative;
     top: 15vh;
@@ -18,7 +18,19 @@
     height: 45vh;
     width: 30vw;
     border-radius: 25px;
+    animation: nombre 4s linear 1s infinite ;
 }
+
+
+@keyframes nombre {
+    0% {
+      transform: rotateY(0deg);
+    }
+    100% {
+      transform: rotateY(180deg);
+    }
+  }
+
 
 .home p{
     display: flex;
