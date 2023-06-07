@@ -9,6 +9,8 @@ import style from './LogIn.module.css'
 function LogIn() {
 //user1 traido de sessionstorage - llamo asi x tener misma varialble
   const  { login, user, setUser, getLs } =useContext(AuthContext)
+
+
   useEffect (() => {
       const user1 = getLs()
       if(user1 && !user.isAuthenticated){
@@ -93,7 +95,7 @@ function LogIn() {
   return (
     <div className={style.gral}>
       <div className={style.login}>
-        <h1 > Log In Demoo </h1>
+        <h1 > Log In Demo </h1>
 
         <form     
           onSubmit={handleSubmit}

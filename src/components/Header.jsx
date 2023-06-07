@@ -1,22 +1,28 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../auth/AuthComp';
 import style from "./Header.module.css";
 import logosolo  from '../imagenes/logosolo.png'
 
 
+
 function Header(props) {
     
     const  { user, logout } =useContext(AuthContext)
     const getUserStorage = JSON.parse(window.sessionStorage.getItem('user')) 
+
+   
+
     
     return (
         <div className = {style.divhead}>
+
+
            <h1>  Silicon - Commerce <img src={logosolo}alt="" /></h1>
             <header> 
                   <NavLink to='/'  >
                         {({ isActive }) => (
-                            <button className = {isActive ? style.btnactive : style.btn}> home </button>
+                            <button className = {isActive ? style.btnactive : style.btn}> Home </button>
                         )}
                  </NavLink> 
 
@@ -41,8 +47,9 @@ function Header(props) {
                         )}
                     </NavLink> 
                   :  <button onClick= {()=> logout() } className = {style.btn}> LogOut </button> } 
-                  
-            </header> 
+                </header> 
+                
+            
         </div>
     );
 }

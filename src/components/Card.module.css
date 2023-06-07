@@ -32,7 +32,9 @@ transition: all 0.2s;
     height: 32vh;
     justify-self: center;
     align-self: center;
-    
+    /* border-radius: 3px; */
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
 }
 
 .info {
@@ -100,4 +102,12 @@ transition: all 0.2s;
     transform: translate(-60px, -70px);
     opacity: 1;
     z-index: 1;
+}
+.heart {
+    position: relative;
+    left: 1vw;
+}
+
+.heart:hover{
+    color: red;
 }

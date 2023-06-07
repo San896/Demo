@@ -1,15 +1,53 @@
+
+
 // case 'ORDER_BY_NAME':
-//             const allR = state.filtRecipes
-//          const sortAll = payload === 'asc' ? allR.sort(function(a,b) {
-//         if (a.name.toLowerCase() > b.name.toLowerCase()) {
-//           return 1
-//         }
-//         if (a.name.toLowerCase() < b.name.toLowerCase()) {
-//           return -1
-//         }
-//         return 0      
-//       }) : 
-//          allR.sort(function(a,b) {
+export  const orderName = (state, order) => {
+
+        const allProd = state
+        
+        if(order === 'asc'){
+             allProd.sort(function(a,b) {
+                if (a.name.toLowerCase() > b.name.toLowerCase()) {
+                    return 1
+                }
+                if (a.name.toLowerCase() < b.name.toLowerCase()) {
+                    return -1
+                }
+                return 0      
+            })}
+
+            else if(order === 'desc'){
+                  allProd.sort(function(a,b) {
+                    if (a.name.toLowerCase() < b.name.toLowerCase()) {
+                       return 1
+                    }
+                    if (a.name.toLowerCase() > b.name.toLowerCase()) {
+                    return -1
+                    }
+                     return 0      
+           })
+            }
+            
+            return allProd
+            
+        }
+
+//          const sortAll = 
+//           order === 'asc' ?
+
+        //   allProd.sort(function(a,b) {
+        //     if (a.name.toLowerCase() > b.name.toLowerCase()) {
+        //         return 1
+        //     }
+        //     if (a.name.toLowerCase() < b.name.toLowerCase()) {
+        //         return -1
+        //     }
+        //     return 0      
+        // }) : 
+
+//         order === 'desc' ?
+
+//           allProd.sort(function(a,b) {
 //            if (a.name.toLowerCase() < b.name.toLowerCase()) {
 //               return 1
 //            }
@@ -17,33 +55,71 @@
 //            return -1
 //            }
 //             return 0      
-//   })
-//             return{
-//                 //...state,
-//                 ...JSON.parse(JSON.stringify(state)),
-//                 recipes: sortAll
-//             }
-//         case 'ORDER_BY_HS':
-//             const allHs = state.recipes
-//             const sortHs = payload === 'High'? allHs.sort(function(a,b){
-//                 if(a.healthScore > b.healthScore){
-//                     return 1
-//                 }
-//                 if(a.healthScore < b.healthScore){
-//                     return -1
-//                 }
-//                 return 0
-//             }) :
-//             allHs.sort(function(a,b){
-//                 if(a.healthScore < b.healthScore){
-//                     return 1
-//                 }
-//                 if(a.healthScore > b.healthScore){
-//                     return -1
-//                 }
-//                 return 0
-//             }) 
-//             return{
-//                 ...JSON.parse(JSON.stringify(state)),
-//                 recipes: sortHs
-//             }    
+//   }) : allProd 
+  
+        // return [sortAll]
+        // }
+
+
+
+
+
+   
+        export const orderPrice = (state, order) => {
+
+            const allProducts = state
+
+            if(order === 'asc'){
+                allProducts.sort(function(a,b) {
+                    if(a.price > b.price){
+                        return -1
+                    }
+                    if(a.price < b.price){
+                        return 1
+                    }
+                    return 0     
+               })}
+   
+               else if(order === 'desc'){
+                allProducts.sort(function(a,b) {
+                    if(a.price < b.price){
+                        return -1
+                    }
+                    if(a.price > b.price){
+                        return 1
+                    }
+                    return 0     
+              })
+               }
+            
+
+            // const sortPrice = 
+            // order === 'asc'? 
+
+            // allProducts.sort(function(a,b){
+            //     if(a.price > b.price){
+            //         return 1
+            //     }
+            //     if(a.price < b.price){
+            //         return -1
+            //     }
+            //     return 0
+            // }) :
+
+            // order === 'desc' ?
+            // allProducts.sort(function(a,b){
+            //     if(a.price < b.price){
+            //         return 1
+            //     }
+            //     if(a.price > b.price){
+            //         return -1
+            //     }
+            //     return 0
+            // }) 
+            // : allProducts
+            
+            return allProducts  
+            
+        }
+
+       

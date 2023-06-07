@@ -5,6 +5,54 @@
     justify-content: center;
     align-items: center;
     /* text-align: center; */
+    background-size: cover;
     
-    background-color: rgba(145, 143, 143, 0.432);
+    
+    
+}
+
+.section {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    position: absolute;
+    top: 17vh;
+    left: 2vw;
+}
+
+.selects {
+    
+    font-weight: 500;
+    color: rgba(173, 37, 37, 0.849);
+    background-color: rgba(131, 130, 130, 0);
+    /* background-color: rgba(173, 37, 37, 0.849); */
+    border-radius: 5px;
+    border: 2px solid rgba(173, 37, 37, 0.849);
+    /* box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.781); */
+    cursor: pointer;
+
+    
+}
+
+.selects:hover{
+    /* box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.9); */
+    transform: translateY(-2%);
+    background-color: rgba(36, 36, 36, 0.678);
+}
+
+.btnrecargar{
+    display: flex;
+    position: absolute;
+    top: 10vh;
+    right: 2vw;
+    color: rgba(173, 37, 37, 0.849);
+    background-color: rgba(131, 130, 130, 0);
+    border-radius: 5px;
+    border: 2px solid rgba(173, 37, 37, 0.849);
+
+}
+
+.btnrecargar:hover{
+    transform: translateY(-2%);
+    background-color: rgba(36, 36, 36, 0.678);
 }

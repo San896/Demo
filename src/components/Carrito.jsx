@@ -8,15 +8,22 @@ function Carrito(props) {
     const navigate = useNavigate()
 
     useEffect(() => {
+        
         if(!user.isAuthenticated){
             alert('Tenes que iniciar sesion para entrar')
             navigate('/login')
         }
-    },[])
+    },[user])
 
     return (
         <div>
-            proximamnete
+            <h1>proximamnete</h1>
+            <ul>
+                <li>Detalle compra</li>
+                <li> Agregar otro prducto</li>
+                <li> Ir a pagar </li>
+                <li> Cancelar </li>
+            </ul>
         </div>
     );
 }

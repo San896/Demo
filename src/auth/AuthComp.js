@@ -1,38 +1,25 @@
 import { createContext, useContext, useState } from "react"
 import Header from "../components/Header";
-import LogIn from "../components/LogIn";
-import { Profile } from '../components/Profile'
 import Rutas from "../rutas/Rutas";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import products from '../products.json'
 
 
 
 export const AuthContext = createContext();
 
-// export const AuthData = () => useContext(AuthContext);
-
 
 export const AuthComp = () => {
 
      const [ user, setUser ] = useState({email: "", password:"", isAuthenticated: false})
+
+     const [ prods, setProds ] = useState(products.results)
+     const [ filtProds,  ] = useState(products.results)
+     const [ fixProds,  ] = useState(products.results)
+     
      const navigate = useNavigate()
 
-     const checkUser = (user1) => {
-          const storage = sessionStorage.getItem('user')
-          if(!user.isAuthenticated && !storage){
-               setUser({user1, isAuthenticated: true})
-               sessionStorage.setItem('user', user)
-               navigate('/profile') 
-          }
-          if(!user.isAuthenticated && storage){
-               setUser(storage)
-               navigate('/profile') 
-          }
-          if(user.isAuthenticated || storage){
-               navigate('/profile') 
-          }
-     }
 
      const  login = async (email, password) => {
           
@@ -92,9 +79,23 @@ export const AuthComp = () => {
           if(userLs) return userLs
      }
 
+     function searchName(name){
+          if(name){
+               const findProds = fixProds.filter( p => p.name.toLowerCase().includes(name) && p.name.toLowerCase()  )
+               if(findProds){
+                    setProds(findProds)
+                    
+               } else{
+                    alert('Producto no encontrado')
+               }
+          } else {    
+               setProds(fixProds)
+          }
+          }
+
      return (
           
-               <AuthContext.Provider value={{user, setUser, login, logout, getLs}} >
+               <AuthContext.Provider value={{user, setUser, login, logout, getLs, prods, setProds, searchName, filtProds}} >
                     <>
                         <Header/>
                         <Rutas/>
